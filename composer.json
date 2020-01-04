@@ -1,0 +1,26 @@
+{
+    "name": "pavel-mironchik/laravel-backup-panel",
+    "description": "An interface for Spatie Laravel Backup package",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Pavel Mironchik",
+            "email": "mironchikpavel@gmail.com"
+        }
+    ],
+    "require": {},
+    "require-dev": {
+        "orchestra/testbench": "^4.4",
+        "phpunit/phpunit": "^8"
+    },
+    "autoload": {
+        "psr-4": {
+            "PavelMironchik\\BackupPanel\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "PavelMironchik\\BackupPanel\\Tests\\": "tests"
+        }
+    }
+}
