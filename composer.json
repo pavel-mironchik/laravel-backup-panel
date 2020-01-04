@@ -8,7 +8,9 @@
             "email": "mironchikpavel@gmail.com"
         }
     ],
-    "require": {},
+    "require": {
+        "spatie/laravel-backup": "^6.7"
+    },
     "require-dev": {
         "orchestra/testbench": "^4.4",
         "phpunit/phpunit": "^8"
@@ -21,6 +23,13 @@
     "autoload-dev": {
         "psr-4": {
             "PavelMironchik\\BackupPanel\\Tests\\": "tests"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "PavelMironchik\\BackupPanel\\BackupPanelServiceProvider"
+            ]
         }
     }
 }
