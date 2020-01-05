@@ -7,7 +7,7 @@
 
 Laravel Backup Panel provides a dashboard for [spatie/laravel-backup](https://github.com/spatie/laravel-backup) package.
 
-![img](https://i.imgur.com/LeDlIuU.png)
+![Screenshot](https://i.imgur.com/LeDlIuU.png)
 
 ## Installation
 
