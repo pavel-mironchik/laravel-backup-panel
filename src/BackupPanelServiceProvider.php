@@ -11,11 +11,11 @@ class BackupPanelServiceProvider extends ServiceProvider
     {
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__ . '/../config/backup_panel.php' => config_path('backup_panel.php')
+                __DIR__.'/../config/backup_panel.php' => config_path('backup_panel.php')
             ], 'backup-panel-config');
 
             $this->publishes([
-                __DIR__ . '/../public' => public_path('vendor/backup_panel'),
+                __DIR__.'/../public' => public_path('vendor/backup_panel'),
             ], 'backup-panel-assets');
         }
 
