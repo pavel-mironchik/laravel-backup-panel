@@ -69,7 +69,7 @@
         methods: {
             async getFiles() {
                 try {
-                    const response = await this.$http.get('/backup/api/files')
+                    const response = await this.$http.get(`/${BackupPanel.path}/api/files`)
 
                     if (response.data.error) {
                         console.error(response.data.error)
@@ -84,7 +84,7 @@
 
             async remove(file) {
                 try {
-                    const response = await this.$http.delete(`/backup/api/files?disk=${file.disk}&path=${file.path}`)
+                    const response = await this.$http.delete(`/${BackupPanel.path}/api/files?disk=${file.disk}&path=${file.path}`)
 
                     if (response.data.error) {
                         console.error(response.data.error)

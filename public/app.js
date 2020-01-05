@@ -1910,7 +1910,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return this.$http.post('/backup/api/files');
+                return this.$http.post("/".concat(BackupPanel.path, "/api/files"));
 
               case 3:
                 response = _context.sent;
@@ -2043,7 +2043,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return this.$http.get('/backup/api/files');
+                return this.$http.get("/".concat(BackupPanel.path, "/api/files"));
 
               case 3:
                 response = _context.sent;
@@ -2091,7 +2091,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return this.$http["delete"]("/backup/api/files?disk=".concat(file.disk, "&path=").concat(file.path));
+                return this.$http["delete"]("/".concat(BackupPanel.path, "/api/files?disk=").concat(file.disk, "&path=").concat(file.path));
 
               case 3:
                 response = _context2.sent;

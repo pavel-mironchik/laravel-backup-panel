@@ -45,7 +45,7 @@
         methods: {
             async backup() {
                 try {
-                    const response = await this.$http.post('/backup/api/files')
+                    const response = await this.$http.post(`/${BackupPanel.path}/api/files`)
 
                     if (response.data.error) {
                         console.error(response.data.error)
