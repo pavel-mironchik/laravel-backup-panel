@@ -11,7 +11,7 @@ class BackupPanelServiceProvider extends ServiceProvider
     {
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__.'/../config/backup_panel.php' => config_path('backup_panel.php')
+                __DIR__.'/../config/backup_panel.php' => config_path('backup_panel.php'),
             ], 'backup-panel-config');
 
             $this->publishes([
@@ -22,7 +22,7 @@ class BackupPanelServiceProvider extends ServiceProvider
         Route::group([
             'prefix' => config('backup_panel.path'),
             'namespace' => 'PavelMironchik\BackupPanel\Http\Controllers',
-            'middleware' => 'web'
+            'middleware' => 'web',
         ], function () {
             $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
         });

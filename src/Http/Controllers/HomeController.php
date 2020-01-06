@@ -17,8 +17,8 @@ class HomeController extends Controller
         return view('backup_panel::layout', [
             'globalVariables' => [
                 'appName' => config('app.name'),
-                'path' => config('backup_panel.path')
-            ]
+                'path' => config('backup_panel.path'),
+            ],
         ]);
     }
 }
