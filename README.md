@@ -25,6 +25,14 @@ Then publish assets:
 $ php artisan vendor:publish --tag=backup-panel-assets
 ```
 
+### Upgrading
+
+When upgrading the package, do not forget to re-publish assets:
+
+```bash
+$ php artisan vendor:publish --tag=backup-panel-assets --force
+```
+
 ## Configuration
 
 Default value of the URI path where Backup Panel will be accessible from is `backup`. To change it you must publish config file:
@@ -45,7 +53,7 @@ composer test
 
 ### Changelog
 
-Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
+Please see [CHANGELOG](CHANGELOG.md) for more information about what has changed recently.
 
 ## Contributing
 
