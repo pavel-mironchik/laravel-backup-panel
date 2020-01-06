@@ -1,8 +1,6 @@
 <?php
 
-
 namespace PavelMironchik\BackupPanel\Tests;
-
 
 use Orchestra\Testbench\TestCase;
 

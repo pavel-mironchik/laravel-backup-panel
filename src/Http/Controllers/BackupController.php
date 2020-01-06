@@ -17,7 +17,7 @@ class BackupController extends Controller
     {
         $diskNames = config('backup.backup.destination.disks');
 
-        if (!count($diskNames)) {
+        if (! count($diskNames)) {
             return ['error' => 'No disks configured!'];
         }
 
@@ -32,7 +32,7 @@ class BackupController extends Controller
                     $data[] = [
                         'path'     => $file,
                         'name'     => pathinfo($file, PATHINFO_BASENAME),
-                        'size'     => round((int)$disk->size($file)/1048576, 2).' MB',
+                        'size'     => round((int) $disk->size($file) / 1048576, 2).' MB',
                         'disk'     => $diskName,
                         'download' => ($adapter instanceof Local) ? true : false,
                         'date'     => Carbon::createFromTimeStamp($disk->lastModified($file))
@@ -62,6 +62,7 @@ class BackupController extends Controller
         }
 
         $storage_path = $disk->getDriver()->getAdapter()->getPathPrefix();
+
         return response()->download($storage_path.$path);
     }
 
@@ -75,6 +76,7 @@ class BackupController extends Controller
         }
 
         $disk->delete($path);
+
         return 'success';
     }
 

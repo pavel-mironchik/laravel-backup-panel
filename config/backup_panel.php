@@ -14,6 +14,6 @@ return [
     |
     */
 
-    'path' => 'backup'
+    'path' => 'backup',
 
 ];
