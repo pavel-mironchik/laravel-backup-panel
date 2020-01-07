@@ -3,6 +3,7 @@
 namespace PavelMironchik\BackupPanel\Tests;
 
 use Illuminate\Foundation\Application;
+use PavelMironchik\BackupPanel\BackupPanel;
 
 class InterfaceTest extends TestCase
 {
@@ -29,6 +30,10 @@ class InterfaceTest extends TestCase
     {
         parent::setUp();
 
+        BackupPanel::auth(function () {
+            return true;
+        });
+
         $this->app->instance('path.public', __DIR__.'/../../public');
     }
 
@@ -49,7 +54,7 @@ class InterfaceTest extends TestCase
         $this->get('backup_test')
             ->assertViewHas('globalVariables', [
                 'appName' => 'Backup Panel Test',
-                'path' => 'backup_test'
+                'path' => 'backup_test',
             ]);
     }
 }

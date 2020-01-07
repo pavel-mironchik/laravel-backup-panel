@@ -7,6 +7,11 @@ use Illuminate\Support\ServiceProvider;
 
 class BackupPanelServiceProvider extends ServiceProvider
 {
+    /**
+     * Bootstrap any application services.
+     *
+     * @return void
+     */
     public function boot()
     {
         if ($this->app->runningInConsole()) {
@@ -17,6 +22,11 @@ class BackupPanelServiceProvider extends ServiceProvider
             $this->publishes([
                 __DIR__.'/../public/vendor/backup_panel' => public_path('vendor/backup_panel'),
             ], 'backup-panel-assets');
+
+            $this->publishes([
+                __DIR__.'/../stubs/BackupPanelServiceProvider.php.stub' =>
+                    app_path('Providers/BackupPanelServiceProvider.php'),
+            ], 'backup-panel-provider');
         }
 
         Route::group([
@@ -30,6 +40,11 @@ class BackupPanelServiceProvider extends ServiceProvider
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'backup_panel');
     }
 
+    /**
+     * Register any application services.
+     *
+     * @return void
+     */
     public function register()
     {
         $this->mergeConfigFrom(__DIR__.'/../config/backup_panel.php', 'backup_panel');

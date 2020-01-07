@@ -25,6 +25,55 @@ Then publish assets:
 $ php artisan vendor:publish --tag=backup-panel-assets
 ```
 
+By default, you will only be able to access the dashboard in the `local` environment. 
+To change that:
+
+1. Publish the `BackupPanelServiceProvider`
+
+```bash
+$ php artisan vendor:publish --tag=backup-panel-provider
+```
+
+2. Add it to the list of application providers in your `app.php` file
+
+```php
+'providers' => [
+
+    ...
+
+    /*
+     * Application Service Providers...
+     */
+    App\Providers\AppServiceProvider::class,
+    App\Providers\AuthServiceProvider::class,
+    // App\Providers\BroadcastServiceProvider::class,
+    App\Providers\EventServiceProvider::class,
+    App\Providers\BackupPanelServiceProvider::class,
+
+    ...
+],
+```
+
+3. Modify authorization gate in your provider
+
+```php
+/**
+ * Register the Laravel Backup Panel gate.
+ *
+ * This gate determines who can access Laravel Backup Panel in non-local environments.
+ *
+ * @return void
+ */
+protected function gate()
+{
+    Gate::define('viewBackupPanel', function ($user) {
+        return in_array($user->email, [
+            'admin@your-site.com'
+        ]);
+    });
+}
+```
+
 ### Upgrading
 
 When upgrading the package, do not forget to re-publish assets:

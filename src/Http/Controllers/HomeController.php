@@ -2,8 +2,8 @@
 
 namespace PavelMironchik\BackupPanel\Http\Controllers;
 
-use Illuminate\Routing\Controller;
 use Illuminate\View\View;
+use PavelMironchik\BackupPanel\BackupPanel;
 
 class HomeController extends Controller
 {
@@ -15,10 +15,7 @@ class HomeController extends Controller
     public function index()
     {
         return view('backup_panel::layout', [
-            'globalVariables' => [
-                'appName' => config('app.name'),
-                'path' => config('backup_panel.path'),
-            ],
+            'globalVariables' => BackupPanel::scriptVariables(),
         ]);
     }
 }
