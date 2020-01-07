@@ -47,8 +47,8 @@ Open `http://your-site/backup`. You'll see a dashboard and controls to use.
 
 ### Testing
 
-``` bash
-composer test
+```bash
+$ composer test
 ```
 
 ### Changelog
@@ -58,6 +58,14 @@ Please see [CHANGELOG](CHANGELOG.md) for more information about what has changed
 ## Contributing
 
 Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
+
+### Development
+
+Make sure you've prepared a dummy Laravel application to test the package in, because assets will be copied there by this line in `webpack.mix.js`:
+
+```js
+.copy('public/vendor/backup_panel', '../laravel-backup-panel-test/public/vendor/backup_panel');
+```
 
 ### Security
 
