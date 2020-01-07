@@ -15,7 +15,7 @@ class BackupPanelServiceProvider extends ServiceProvider
             ], 'backup-panel-config');
 
             $this->publishes([
-                __DIR__.'/../public' => public_path('vendor/backup_panel'),
+                __DIR__.'/../public/vendor/backup_panel' => public_path('vendor/backup_panel'),
             ], 'backup-panel-assets');
         }
 

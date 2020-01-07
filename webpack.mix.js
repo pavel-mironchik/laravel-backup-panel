@@ -12,7 +12,8 @@ const mix = require('laravel-mix');
  */
 
 mix
-    .setPublicPath('public')
-    .js('resources/js/app.js', 'public')
-    .sass('resources/sass/app.scss', 'public')
-    .copy('public', '../backup-panel-test/public/vendor/backup_panel');
+    .setPublicPath('public/vendor/backup_panel')
+    .js('resources/js/app.js', '')
+    .sass('resources/sass/app.scss', '')
+    .version()
+    .copy('public/vendor/backup_panel', '../laravel-backup-panel-test/public/vendor/backup_panel');
