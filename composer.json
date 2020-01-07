@@ -6,7 +6,7 @@
         "backup",
         "database",
         "laravel-backup",
-        "spatie/laravel-backup"
+        "spatie"
     ],
     "license": "MIT",
     "authors": [
