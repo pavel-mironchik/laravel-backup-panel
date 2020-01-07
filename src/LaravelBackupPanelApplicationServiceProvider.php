@@ -1,11 +1,11 @@
 <?php
 
-namespace PavelMironchik\BackupPanel;
+namespace PavelMironchik\LaravelBackupPanel;
 
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 
-class BackupPanelApplicationServiceProvider extends ServiceProvider
+class LaravelBackupPanelApplicationServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap any application services.
@@ -26,9 +26,9 @@ class BackupPanelApplicationServiceProvider extends ServiceProvider
     {
         $this->gate();
 
-        BackupPanel::auth(function ($request) {
+        LaravelBackupPanel::auth(function ($request) {
             return app()->environment('local') ||
-                   Gate::check('viewBackupPanel', [$request->user()]);
+                   Gate::check('viewLaravelBackupPanel', [$request->user()]);
         });
     }
 
@@ -41,7 +41,7 @@ class BackupPanelApplicationServiceProvider extends ServiceProvider
      */
     protected function gate()
     {
-        Gate::define('viewBackupPanel', function ($user) {
+        Gate::define('viewLaravelBackupPanel', function ($user) {
             return in_array($user->email, [
                 // 'admin@your-site.com'
             ]);

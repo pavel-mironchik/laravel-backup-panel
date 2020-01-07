@@ -1,9 +1,9 @@
 <?php
 
-namespace PavelMironchik\BackupPanel\Http\Controllers;
+namespace PavelMironchik\LaravelBackupPanel\Http\Controllers;
 
 use Illuminate\View\View;
-use PavelMironchik\BackupPanel\BackupPanel;
+use PavelMironchik\LaravelBackupPanel\LaravelBackupPanel;
 
 class HomeController extends Controller
 {
@@ -14,8 +14,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('backup_panel::layout', [
-            'globalVariables' => BackupPanel::scriptVariables(),
+        return view('laravel_backup_panel::layout', [
+            'globalVariables' => LaravelBackupPanel::scriptVariables(),
         ]);
     }
 }

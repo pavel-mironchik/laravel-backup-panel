@@ -15,4 +15,4 @@ Route::prefix('api')->group(function () {
 // Catch-all route...
 Route::get('/{view?}', 'HomeController@index')
     ->where('view', '(.*)')
-    ->name('backup_panel.index');
+    ->name('laravel_backup_panel.index');

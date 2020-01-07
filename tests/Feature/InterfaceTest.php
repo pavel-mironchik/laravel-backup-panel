@@ -1,12 +1,14 @@
 <?php
 
-namespace PavelMironchik\BackupPanel\Tests;
+namespace PavelMironchik\LaravelBackupPanel\Tests;
 
 use Illuminate\Foundation\Application;
-use PavelMironchik\BackupPanel\BackupPanel;
+use PavelMironchik\LaravelBackupPanel\LaravelBackupPanel;
 
 class InterfaceTest extends TestCase
 {
+    protected $basePath = 'backup_test';
+
     /**
      * Define environment setup.
      *
@@ -17,8 +19,8 @@ class InterfaceTest extends TestCase
     protected function getEnvironmentSetUp($app)
     {
         $app['config']->set('app.key', 'base64:GhFMLyZ7x32kzu0How7wF8CIei+UC9Lc69Jcr+Z3sAk=');
-        $app['config']->set('app.name', 'Backup Panel Test');
-        $app['config']->set('backup_panel.path', 'backup_test');
+        $app['config']->set('app.name', 'Laravel Backup Panel Test');
+        $app['config']->set('laravel_backup_panel.path', $this->basePath);
     }
 
     /**
@@ -30,7 +32,7 @@ class InterfaceTest extends TestCase
     {
         parent::setUp();
 
-        BackupPanel::auth(function () {
+        LaravelBackupPanel::auth(function () {
             return true;
         });
 
@@ -39,22 +41,22 @@ class InterfaceTest extends TestCase
 
     public function test_panel_is_served_at_configured_path()
     {
-        $this->get('backup_test')
+        $this->get($this->basePath)
             ->assertOk();
     }
 
     public function test_home_view_is_served()
     {
-        $this->get('backup_test')
-            ->assertViewIs('backup_panel::layout');
+        $this->get($this->basePath)
+            ->assertViewIs('laravel_backup_panel::layout');
     }
 
     public function test_home_view_gets_global_variables()
     {
-        $this->get('backup_test')
+        $this->get($this->basePath)
             ->assertViewHas('globalVariables', [
-                'appName' => 'Backup Panel Test',
-                'path' => 'backup_test',
+                'appName' => 'Laravel Backup Panel Test',
+                'path' => $this->basePath,
             ]);
     }
 }

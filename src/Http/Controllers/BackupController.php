@@ -1,6 +1,6 @@
 <?php
 
-namespace PavelMironchik\BackupPanel\Http\Controllers;
+namespace PavelMironchik\LaravelBackupPanel\Http\Controllers;
 
 use Carbon\Carbon;
 use Exception;

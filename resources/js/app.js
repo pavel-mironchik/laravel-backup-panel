@@ -25,13 +25,13 @@ const routes = [
 
 const router = new VueRouter({
     mode: 'history',
-    base: '/' + window.BackupPanel.path + '/',
+    base: '/' + window.LaravelBackupPanel.path + '/',
     routes
 })
 
 Vue.prototype.$eventHub = new Vue()
 
 new Vue({
-    el: '#backup_panel',
+    el: '#laravel_backup_panel',
     router
 });

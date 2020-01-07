@@ -22,19 +22,19 @@ $ composer require pavel-mironchik/laravel-backup-panel
 Then publish assets:
 
 ```bash
-$ php artisan vendor:publish --tag=backup-panel-assets
+$ php artisan vendor:publish --tag=laravel-backup-panel-assets
 ```
 
 By default, you will only be able to access the dashboard in the `local` environment. 
 To change that:
 
-1. Publish the `BackupPanelServiceProvider`
+1. Publish the `LaravelBackupPanelServiceProvider`
 
 ```bash
-$ php artisan vendor:publish --tag=backup-panel-provider
+$ php artisan vendor:publish --tag=laravel-backup-panel-provider
 ```
 
-2. Add it to the list of application providers in your `app.php` file
+2. Add it to the list of application providers in your `app.php` file (anywhere below `EventServiceProvider`)
 
 ```php
 'providers' => [
@@ -48,7 +48,7 @@ $ php artisan vendor:publish --tag=backup-panel-provider
     App\Providers\AuthServiceProvider::class,
     // App\Providers\BroadcastServiceProvider::class,
     App\Providers\EventServiceProvider::class,
-    App\Providers\BackupPanelServiceProvider::class,
+    App\Providers\LaravelBackupPanelServiceProvider::class,
 
     ...
 ],
@@ -66,7 +66,7 @@ $ php artisan vendor:publish --tag=backup-panel-provider
  */
 protected function gate()
 {
-    Gate::define('viewBackupPanel', function ($user) {
+    Gate::define('viewLaravelBackupPanel', function ($user) {
         return in_array($user->email, [
             'admin@your-site.com'
         ]);
@@ -79,15 +79,15 @@ protected function gate()
 When upgrading the package, do not forget to re-publish assets:
 
 ```bash
-$ php artisan vendor:publish --tag=backup-panel-assets --force
+$ php artisan vendor:publish --tag=laravel-backup-panel-assets --force
 ```
 
 ## Configuration
 
-Default value of the URI path where Backup Panel will be accessible from is `backup`. To change it you must publish config file:
+Default value of the URI path where Laravel Backup Panel will be accessible from is `backup`. To change it you must publish config file:
 
 ```bash
-$ php artisan vendor:publish --tag=backup-panel-config
+$ php artisan vendor:publish --tag=laravel-backup-panel-config
 ```
 
 ## Usage
@@ -113,7 +113,7 @@ Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 Make sure you've prepared a dummy Laravel application to test the package in, because assets will be copied there by this line in `webpack.mix.js`:
 
 ```js
-.copy('public/vendor/backup_panel', '../laravel-backup-panel-test/public/vendor/backup_panel');
+.copy('public/vendor/laravel_backup_panel', '../laravel-backup-panel-test/public/vendor/laravel_backup_panel');
 ```
 
 ### Security

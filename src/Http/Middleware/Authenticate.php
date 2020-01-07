@@ -1,11 +1,11 @@
 <?php
 
-namespace PavelMironchik\BackupPanel\Http\Middleware;
+namespace PavelMironchik\LaravelBackupPanel\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use PavelMironchik\BackupPanel\BackupPanel;
+use PavelMironchik\LaravelBackupPanel\LaravelBackupPanel;
 
 class Authenticate
 {
@@ -18,6 +18,6 @@ class Authenticate
      */
     public function handle($request, $next)
     {
-        return BackupPanel::check($request) ? $next($request) : abort(403);
+        return LaravelBackupPanel::check($request) ? $next($request) : abort(403);
     }
 }

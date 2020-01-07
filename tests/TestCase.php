@@ -1,9 +1,9 @@
 <?php
 
-namespace PavelMironchik\BackupPanel\Tests;
+namespace PavelMironchik\LaravelBackupPanel\Tests;
 
 use Illuminate\Foundation\Application;
-use PavelMironchik\BackupPanel\BackupPanelServiceProvider;
+use PavelMironchik\LaravelBackupPanel\LaravelBackupPanelServiceProvider;
 
 class TestCase extends \Orchestra\Testbench\TestCase
 {
@@ -17,7 +17,7 @@ class TestCase extends \Orchestra\Testbench\TestCase
     protected function getPackageProviders($app)
     {
         return [
-            BackupPanelServiceProvider::class,
+            LaravelBackupPanelServiceProvider::class,
         ];
     }
 }

@@ -1,8 +1,8 @@
 <?php
 
-namespace PavelMironchik\BackupPanel\Http\Controllers;
+namespace PavelMironchik\LaravelBackupPanel\Http\Controllers;
 
-use PavelMironchik\BackupPanel\Http\Middleware\Authenticate;
+use PavelMironchik\LaravelBackupPanel\Http\Middleware\Authenticate;
 
 class Controller extends \Illuminate\Routing\Controller
 {

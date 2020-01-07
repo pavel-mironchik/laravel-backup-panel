@@ -1,11 +1,11 @@
 <?php
 
-namespace PavelMironchik\BackupPanel;
+namespace PavelMironchik\LaravelBackupPanel;
 
 use Closure;
 use Illuminate\Http\Request;
 
-class BackupPanel
+class LaravelBackupPanel
 {
     /**
      * The callback that should be used to authenticate Laravel Backup Panel users.
@@ -49,7 +49,7 @@ class BackupPanel
     {
         return [
             'appName' => config('app.name'),
-            'path' => config('backup_panel.path'),
+            'path' => config('laravel_backup_panel.path'),
         ];
     }
 }

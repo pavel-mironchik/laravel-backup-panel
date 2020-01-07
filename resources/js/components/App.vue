@@ -2,7 +2,7 @@
     <div class="container mb-5">
         <div class="d-flex align-items-center py-4 header">
             <h4 class="mb-0 ml-2">
-                <strong>Backup Dashboard</strong>{{ appName ? ' - ' + appName : '' }}
+                <strong>Laravel Backup Dashboard</strong>{{ appName ? ' - ' + appName : '' }}
             </h4>
 
             <button class="btn btn-outline-secondary ml-auto" @click="backup">
@@ -38,14 +38,14 @@
 
         data() {
             return {
-                appName: window.BackupPanel.appName
+                appName: window.LaravelBackupPanel.appName
             }
         },
 
         methods: {
             async backup() {
                 try {
-                    const response = await this.$http.post(`/${BackupPanel.path}/api/files`)
+                    const response = await this.$http.post(`/${LaravelBackupPanel.path}/api/files`)
 
                     if (response.data.error) {
                         console.error(response.data.error)
