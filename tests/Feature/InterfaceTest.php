@@ -55,7 +55,6 @@ class InterfaceTest extends TestCase
     {
         $this->get($this->basePath)
             ->assertViewHas('globalVariables', [
-                'appName' => 'Laravel Backup Panel Test',
                 'path' => $this->basePath,
             ]);
     }
