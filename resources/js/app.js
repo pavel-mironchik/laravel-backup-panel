@@ -1,37 +1,41 @@
 import Vue from 'vue'
 import axios from 'axios'
+import Routes from './routes'
 import VueRouter from 'vue-router'
+import State from './store/state'
+import Mutations from './store/mutations'
+import Vuex from 'vuex'
+import Toasted from 'vue-toasted'
 
 require('bootstrap')
+window.$ = window.jQuery = require('jquery')
 
 axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
-Vue.prototype.$http = axios.create()
+Vue.prototype.$http = axios.create({
+    baseURL: LaravelBackupPanel.path
+})
 
 Vue.use(VueRouter)
 
-const routes = [
-    {
-        path: '/',
-        redirect: '/files',
-        component: require('./components/App').default,
-        children: [
-            {
-                path: 'files',
-                component: require('./components/Files').default
-            }
-        ]
-    }
-]
-
 const router = new VueRouter({
     mode: 'history',
-    base: '/' + window.LaravelBackupPanel.path + '/',
-    routes
+    base: '/' + LaravelBackupPanel.path + '/',
+    routes: Routes
 })
+
+Vue.use(Vuex)
+
+const store = new Vuex.Store({
+    state: State,
+    mutations: Mutations,
+})
+
+Vue.use(Toasted)
 
 Vue.prototype.$eventHub = new Vue()
 
 new Vue({
     el: '#laravel_backup_panel',
-    router
+    store,
+    router,
 });

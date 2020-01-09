@@ -47,9 +47,6 @@ class LaravelBackupPanel
      */
     public static function scriptVariables()
     {
-        return [
-            'appName' => config('app.name'),
-            'path' => config('laravel_backup_panel.path'),
-        ];
+        return config('laravel_backup_panel');
     }
 }

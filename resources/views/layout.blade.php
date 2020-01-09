@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Laravel Backup Panel{{ $globalVariables['appName'] ? ' - ' . $globalVariables['appName'] : '' }}</title>
+    <title>Laravel Backup Panel{{ config('app.name') ? ' - ' . config('app.name') : '' }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset(mix('app.js', 'vendor/laravel_backup_panel')) }}" defer></script>

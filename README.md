@@ -6,12 +6,27 @@
 [![Total Downloads](https://img.shields.io/packagist/dt/pavel-mironchik/laravel-backup-panel.svg?style=flat-square)](https://packagist.org/packages/pavel-mironchik/laravel-backup-panel)
 
 Laravel Backup Panel provides a dashboard for [spatie/laravel-backup](https://github.com/spatie/laravel-backup) package.
+It lets you:
+- check health of your backups
+- list all backups
+- download a backup
+- delete a backup
 
-![Screenshot](https://i.imgur.com/LeDlIuU.png)
+It resembles look and functionality of another Spatie package: [spatie/nova-backup-tool](https://github.com/spatie/nova-backup-tool), only it doesn't use polling.
+_A "real-time" updates of a backups list isn't such a necessarily thing and an intensive polling can cause unexpected charges if you use services that require to pay per API requests, such as Google Cloud Storage.
+Also, some users reported about hitting a rate limit of Dropbox API._
+
+![Screenshot](https://i.imgur.com/jrqTPuJ.png)
+
+## Requirements
+
+Make sure you meet [the requirements for installing spatie/laravel-backup](https://docs.spatie.be/laravel-backup/v6/requirements).
 
 ## Installation
 
-Before using this package make sure you've installed and configured [spatie/laravel-backup](https://github.com/spatie/laravel-backup) package!
+First you must install [spatie/laravel-backup](https://docs.spatie.be/laravel-backup) into your Laravel app. 
+The installation instructions are [here](https://docs.spatie.be/laravel-backup/v6/installation-and-setup). 
+When successfull running `php artisan backup:run` on the terminal should create a backup and `php artisan backup:list` should return a list with an overview of all backup disks.
 
 You can install the package via composer:
 

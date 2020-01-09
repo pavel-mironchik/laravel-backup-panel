@@ -3,13 +3,13 @@
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('api')->group(function () {
-    Route::get('/files', 'BackupController@files');
+    Route::get('backups', 'BackupsController@index');
+    Route::post('backups', 'BackupsController@create');
+    Route::delete('backups', 'BackupsController@delete');
 
-    Route::get('/files/download', 'BackupController@download');
+    Route::get('download-backup', 'DownloadBackupController');
 
-    Route::delete('/files', 'BackupController@delete');
-
-    Route::post('/files', 'BackupController@create');
+    Route::get('backup-statuses', 'BackupStatusesController');
 });
 
 // Catch-all route...
