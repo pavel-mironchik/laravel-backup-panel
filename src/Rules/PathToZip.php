@@ -2,8 +2,8 @@
 
 namespace PavelMironchik\LaravelBackupPanel\Rules;
 
-use Illuminate\Support\Str;
 use Illuminate\Contracts\Validation\Rule;
+use Illuminate\Support\Str;
 
 class PathToZip implements Rule
 {

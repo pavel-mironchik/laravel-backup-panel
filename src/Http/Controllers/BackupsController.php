@@ -4,12 +4,12 @@ namespace PavelMironchik\LaravelBackupPanel\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
+use PavelMironchik\LaravelBackupPanel\Jobs\CreateBackupJob;
 use PavelMironchik\LaravelBackupPanel\Rules\BackupDisk;
 use PavelMironchik\LaravelBackupPanel\Rules\PathToZip;
 use Spatie\Backup\BackupDestination\Backup;
 use Spatie\Backup\BackupDestination\BackupDestination;
 use Spatie\Backup\Helpers\Format;
-use PavelMironchik\LaravelBackupPanel\Jobs\CreateBackupJob;
 
 class BackupsController extends Controller
 {

@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-backup-panel` will be documented in this file
 
+## 1.2.0 - 2020-01-09
+
+- resemble look and functionality of Spatie's Laravel Nova Backup tool
+
 ## 1.1.0 - 2020-01-07
 
 - restrict access in non-local environments by default
