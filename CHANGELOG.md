@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-backup-panel` will be documented in this file
 
+## 1.3.0 - 2020-01-11
+
+- add Artisan command for installing the package
+
 ## 1.2.0 - 2020-01-09
 
 - resemble look and functionality of Spatie's Laravel Nova Backup tool

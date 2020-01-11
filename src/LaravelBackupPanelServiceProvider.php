@@ -26,6 +26,10 @@ class LaravelBackupPanelServiceProvider extends ServiceProvider
             $this->publishes([
                 __DIR__.'/../stubs/LaravelBackupPanelServiceProvider.php.stub' => app_path('Providers/LaravelBackupPanelServiceProvider.php'),
             ], 'laravel-backup-panel-provider');
+
+            $this->commands([
+                Console\InstallCommand::class,
+            ]);
         }
 
         Route::group([

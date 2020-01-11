@@ -4,6 +4,7 @@
 - Allow to restore a backup (not certainly)
 - Add tests
 - Provide an output for backup command
-- Artisan commands for installing/upgrading the package
 - Realtime updates (using events and websockets)
+- Allow to change settings of spatie/laravel-backup package from interface - add/remove disks, etc. (not certainly)
+- Test spatie/laravel-backup settings
 - Refactoring :)

@@ -3,11 +3,13 @@
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/pavel-mironchik/laravel-backup-panel.svg?style=flat-square)](https://packagist.org/packages/pavel-mironchik/laravel-backup-panel)
 [![Build Status](https://img.shields.io/travis/pavel-mironchik/laravel-backup-panel/master.svg?style=flat-square)](https://travis-ci.org/pavel-mironchik/laravel-backup-panel)
 [![Quality Score](https://img.shields.io/scrutinizer/g/pavel-mironchik/laravel-backup-panel.svg?style=flat-square)](https://scrutinizer-ci.com/g/pavel-mironchik/laravel-backup-panel)
+[![StyleCI](https://github.styleci.io/repos/231844000/shield?branch=master)](https://github.styleci.io/repos/231844000)
 [![Total Downloads](https://img.shields.io/packagist/dt/pavel-mironchik/laravel-backup-panel.svg?style=flat-square)](https://packagist.org/packages/pavel-mironchik/laravel-backup-panel)
 
 Laravel Backup Panel provides a dashboard for [spatie/laravel-backup](https://github.com/spatie/laravel-backup) package.
 It lets you:
-- check health of your backups
+- create a backup (full | only database | only files)
+- check the health of your backups
 - list all backups
 - download a backup
 - delete a backup
@@ -26,50 +28,40 @@ Make sure you meet [the requirements for installing spatie/laravel-backup](https
 
 First you must install [spatie/laravel-backup](https://docs.spatie.be/laravel-backup) into your Laravel app. 
 The installation instructions are [here](https://docs.spatie.be/laravel-backup/v6/installation-and-setup). 
-When successfull running `php artisan backup:run` on the terminal should create a backup and `php artisan backup:list` should return a list with an overview of all backup disks.
+When successful, running `php artisan backup:run` on the terminal should create a backup and `php artisan backup:list` should return a list with an overview of all backup disks.
 
-You can install the package via composer:
+You may use composer to install Laravel Backup Panel into your project:
 
 ```bash
 $ composer require pavel-mironchik/laravel-backup-panel
 ```
 
-Then publish assets:
+After installing, publish it resources using provided Artisan command:
 
 ```bash
-$ php artisan vendor:publish --tag=laravel-backup-panel-assets
+$ php artisan laravel-backup-panel:install
+```
+
+This will place assets into `public/laravel_backup_panel` directory, add config file `config/laravel_backup_panel.php`, and register service provider `app/Providers/LaravelBackupPanelServiceProvider.php`.
+
+### Upgrading
+
+When upgrading the package, do not forget to re-publish assets:
+
+```bash
+$ php artisan vendor:publish --tag=laravel-backup-panel-assets --force
+```
+
+## Configuration
+
+Laravel Backup Panel exposes a dashboard at `/backup`. Change it in `config/laravel_backup_panel.php` file:
+
+```php
+'path' => 'backup',
 ```
 
 By default, you will only be able to access the dashboard in the `local` environment. 
-To change that:
-
-1. Publish the `LaravelBackupPanelServiceProvider`
-
-```bash
-$ php artisan vendor:publish --tag=laravel-backup-panel-provider
-```
-
-2. Add it to the list of application providers in your `app.php` file (anywhere below `EventServiceProvider`)
-
-```php
-'providers' => [
-
-    ...
-
-    /*
-     * Application Service Providers...
-     */
-    App\Providers\AppServiceProvider::class,
-    App\Providers\AuthServiceProvider::class,
-    // App\Providers\BroadcastServiceProvider::class,
-    App\Providers\EventServiceProvider::class,
-    App\Providers\LaravelBackupPanelServiceProvider::class,
-
-    ...
-],
-```
-
-3. Modify authorization gate in your provider
+To change that, modify authorization gate in the `app/Providers/LaravelBackupPanelServiceProvider.php`:
 
 ```php
 /**
@@ -83,26 +75,10 @@ protected function gate()
 {
     Gate::define('viewLaravelBackupPanel', function ($user) {
         return in_array($user->email, [
-            'admin@your-site.com'
+            'admin@your-site.com',
         ]);
     });
 }
-```
-
-### Upgrading
-
-When upgrading the package, do not forget to re-publish assets:
-
-```bash
-$ php artisan vendor:publish --tag=laravel-backup-panel-assets --force
-```
-
-## Configuration
-
-Default value of the URI path where Laravel Backup Panel will be accessible from is `backup`. To change it you must publish config file:
-
-```bash
-$ php artisan vendor:publish --tag=laravel-backup-panel-config
 ```
 
 ## Usage
