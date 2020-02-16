@@ -63,6 +63,13 @@ Laravel Backup Panel exposes a dashboard at `/backup`. Change it in `config/lara
 'path' => 'backup',
 ```
 
+Sometimes you don't want to run backup jobs on the same queue as user actions and things that is more time critical. 
+Specify your desired queue name in `config/laravel_backup_panel.php` file:
+
+```php
+'queue' => 'dedicated_low_priority_queue',
+```
+
 By default, you will only be able to access the dashboard in the `local` environment. 
 To change that, modify authorization gate in the `app/Providers/LaravelBackupPanelServiceProvider.php`:
 
