@@ -17,4 +17,18 @@ return [
 
     'path' => 'backup',
 
+    /*
+    |--------------------------------------------------------------------------
+    | Queue To Run Backup Jobs
+    |--------------------------------------------------------------------------
+    |
+    | You can specify a queue name to use for the jobs to run through.
+    |
+    | Useful when you don't want to run backup jobs on the same queue as user
+    | actions and things that is more time critical.
+    |
+    */
+
+    'queue' => null,
+
 ];

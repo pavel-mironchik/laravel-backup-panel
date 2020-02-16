@@ -17,7 +17,7 @@ It lets you:
 
 ![Screenshot](https://i.imgur.com/jrqTPuJ.png)
 
-It resembles look and functionality of another Spatie package: [spatie/nova-backup-tool](https://github.com/spatie/nova-backup-tool).
+It resembles the look and functionality of another Spatie package: [spatie/nova-backup-tool](https://github.com/spatie/nova-backup-tool).
 This was done on purpose, so users can easily migrate from one to another.
 Only it doesn't use polling.
 _A "real-time" updates of a backups list isn't such a necessarily thing and an intensive polling can cause unexpected charges if you use services that require to pay per API requests, such as Google Cloud Storage.

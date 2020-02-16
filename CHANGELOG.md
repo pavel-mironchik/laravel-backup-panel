@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-backup-panel` will be documented in this file
 
+## 1.3.1 - 2020-02-16
+
+- allow to use a custom queue
+
 ## 1.3.0 - 2020-01-11
 
 - add Artisan command for installing the package

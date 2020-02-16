@@ -24,6 +24,7 @@ class InterfaceTest extends TestCase
         $this->get('/backup')
             ->assertViewHas('globalVariables', [
                 'path' => 'backup',
+                'queue' => null,
             ]);
     }
 
