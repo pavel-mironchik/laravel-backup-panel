@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-backup-panel` will be documented in this file
 
+## 1.4.0 - 2020-03-08
+
+- add support for Laravel 7
+
 ## 1.3.1 - 2020-02-16
 
 - allow to use a custom queue
