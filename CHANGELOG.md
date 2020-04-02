@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-backup-panel` will be documented in this file
 
+## 1.5.0 - 2020-04-02
+
+- show warning when assets are outdated (it is recommended to run `php artisan vendor:publish --tag=laravel-backup-panel-assets --force` after updating)
+
 ## 1.4.0 - 2020-03-08
 
 - add support for Laravel 7
