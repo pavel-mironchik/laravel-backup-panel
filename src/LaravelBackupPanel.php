@@ -52,7 +52,7 @@ class LaravelBackupPanel
         return array_merge(
             config('laravel_backup_panel'),
             [
-                'assetsAreCurrent' => static::assetsAreCurrent()
+                'assetsAreCurrent' => static::assetsAreCurrent(),
             ]
         );
     }
