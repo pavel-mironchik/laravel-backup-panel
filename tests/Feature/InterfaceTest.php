@@ -25,7 +25,7 @@ class InterfaceTest extends TestCase
             ->assertViewHas('globalVariables', [
                 'path' => 'backup',
                 'queue' => null,
-                'assetsAreCurrent' => true
+                'assetsAreCurrent' => true,
             ]);
     }
 
