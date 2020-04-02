@@ -1,5 +1,15 @@
 <template>
     <div class="container mb-5">
+        <div class="row mt-2" v-if="!assetsAreCurrent">
+            <div class="col">
+                <div class="alert alert-warning">
+                    The published Laravel Backup Panel assets are not up-to-date with the installed version. To update, run:
+                    <br/>
+                    <code>php artisan vendor:publish --tag=laravel-backup-panel-assets --force</code>
+                </div>
+            </div>
+        </div>
+
         <div class="d-flex align-items-end pt-4">
             <h5 class="mb-0">
                 Laravel Backup Panel
@@ -38,6 +48,12 @@
 <script>
     export default {
         name: 'App',
+
+        data() {
+            return {
+                assetsAreCurrent: LaravelBackupPanel.assetsAreCurrent
+            }
+        },
 
         methods: {
             async createBackup(option = '') {

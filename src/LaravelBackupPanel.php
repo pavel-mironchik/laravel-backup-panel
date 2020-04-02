@@ -4,6 +4,8 @@ namespace PavelMironchik\LaravelBackupPanel;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
+use RuntimeException;
 
 class LaravelBackupPanel
 {
@@ -47,6 +49,29 @@ class LaravelBackupPanel
      */
     public static function scriptVariables()
     {
-        return config('laravel_backup_panel');
+        return array_merge(
+            config('laravel_backup_panel'),
+            [
+                'assetsAreCurrent' => static::assetsAreCurrent()
+            ]
+        );
+    }
+
+    /**
+     * Determine if Laravel Backup Panel's published assets are up-to-date.
+     *
+     * @return bool
+     *
+     * @throws RuntimeException
+     */
+    private static function assetsAreCurrent()
+    {
+        $publishedPath = public_path('vendor/laravel_backup_panel/mix-manifest.json');
+
+        if (! File::exists($publishedPath)) {
+            throw new RuntimeException('Laravel Backup Panel assets are not published. Please run: php artisan vendor:publish --tag=laravel-backup-panel-assets --force');
+        }
+
+        return File::get($publishedPath) === File::get(__DIR__.'/../public/vendor/laravel_backup_panel/mix-manifest.json');
     }
 }
