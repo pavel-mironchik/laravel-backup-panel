@@ -121,6 +121,14 @@ Make sure you've prepared a dummy Laravel application to test the package in, be
 
 If you discover any security related issues, please email mironchikpavel@gmail.com instead of using the issue tracker.
 
+## Support
+
+If you like this package, consider supporting it. You can use this in such ways:
+1. If you don't have a Digital Ocean account yet - use this link https://m.do.co/c/d9cd33e44510 to register one. You will get $100 in credit over 60 days, and once you spent $25 - I will get $25 too. This will cover the cost of hosting my nonprofit open-source projects there.
+1. If you have some Laravel/Vue project/work to be done, then contact me - mironchikpavel@gmail.com. I work as a freelancer (mostly at UpWork), and such a project can pay my bills.
+
+And any other help will be appreciated.
+
 ## Credits
 
 - [Pavel Mironchik](https://github.com/pavel-mironchik)
