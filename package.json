@@ -14,7 +14,7 @@
         "bootstrap": "^4.0.0",
         "bootstrap-icons": "^1.0.0-alpha2",
         "cross-env": "^5.1",
-        "jquery": "^3.2",
+        "jquery": "^3.5",
         "laravel-mix": "^4.0.7",
         "popper.js": "^1.12",
         "resolve-url-loader": "^2.3.1",
