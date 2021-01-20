@@ -1,19 +1,16 @@
 const mix = require('laravel-mix');
+const fs = require('fs-extra')
 
-/*
- |--------------------------------------------------------------------------
- | Mix Asset Management
- |--------------------------------------------------------------------------
- |
- | Mix provides a clean, fluent API for defining some Webpack build steps
- | for your Laravel application. By default, we are compiling the Sass
- | file for the application as well as bundling up all the JS files.
- |
- */
-
-mix
+mix.options({
+        terser: {
+            extractComments: false,
+        }
+    })
     .setPublicPath('public/vendor/laravel_backup_panel')
-    .js('resources/js/app.js', '')
+    .js('resources/js/app.js', '').vue()
     .sass('resources/sass/app.scss', '')
     .version()
-    .copy('public/vendor/laravel_backup_panel', '../laravel-backup-panel-test/public/vendor/laravel_backup_panel');
+    .after(webpackStats => {
+        fs.copy('public/vendor/laravel_backup_panel', '../laravel-backup-panel-test/public/vendor/laravel_backup_panel')
+            .catch(err => console.error(err))
+    })
