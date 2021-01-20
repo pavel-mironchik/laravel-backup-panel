@@ -16,11 +16,13 @@
         }
     ],
     "require": {
+        "php": "^8.0|^7.3",
+        "livewire/livewire": "^2.3",
         "spatie/laravel-backup": "^6.7"
     },
     "require-dev": {
-        "orchestra/testbench": "^4.4",
-        "phpunit/phpunit": "^8"
+        "orchestra/testbench": "^5.0|^6.0",
+        "phpunit/phpunit": "9.3"
     },
     "autoload": {
         "psr-4": {
