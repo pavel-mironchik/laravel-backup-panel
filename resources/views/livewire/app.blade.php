@@ -347,6 +347,17 @@
                 @this.getFiles()
             })
 
+            @this.on('showErrorToast', function (message) {
+                Toastify({
+                    text: message,
+                    duration: 10000,
+                    gravity: 'bottom',
+                    position: 'right',
+                    backgroundColor: 'red',
+                    className: 'toastify-custom',
+                }).showToast()
+            })
+
             const backupFun = function (option = '') {
                 Toastify({
                     text: 'Creating a new backup in the background...' + (option ? ' (' + option + ')' : ''),

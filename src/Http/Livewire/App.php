@@ -4,8 +4,12 @@ namespace PavelMironchik\LaravelBackupPanel\Http\Livewire;
 
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\ValidationException;
 use Livewire\Component;
 use PavelMironchik\LaravelBackupPanel\Jobs\CreateBackupJob;
+use PavelMironchik\LaravelBackupPanel\Rules\BackupDisk;
+use PavelMironchik\LaravelBackupPanel\Rules\PathToZip;
 use Spatie\Backup\BackupDestination\Backup;
 use Spatie\Backup\BackupDestination\BackupDestination;
 use Spatie\Backup\Helpers\Format;
@@ -63,9 +67,7 @@ class App extends Component
             $this->activeDisk = $disk;
         }
 
-        if (!$this->activeDisk) {
-            return;
-        }
+        $this->validateActiveDisk();
 
         $backupDestination = BackupDestination::create($this->activeDisk, config('backup.backup.name'));
 
@@ -92,12 +94,13 @@ class App extends Component
 
     public function deleteFile()
     {
-        if (!$this->deletingFile) {
-            return;
-        }
-
         $deletingFile = $this->deletingFile;
         $this->deletingFile = null;
+
+        $this->emitSelf('hideDeleteModal');
+
+        $this->validateActiveDisk();
+        $this->validateFilePath($deletingFile ? $deletingFile['path'] : '');
 
         $backupDestination = BackupDestination::create($this->activeDisk, config('backup.backup.name'));
 
@@ -116,19 +119,21 @@ class App extends Component
             })
             ->values()
             ->all();
-
-        $this->emitSelf('hideDeleteModal');
     }
 
     public function downloadFile(string $filePath)
     {
+
+        $this->validateActiveDisk();
+        $this->validateFilePath($filePath);
+
         $backupDestination = BackupDestination::create($this->activeDisk, config('backup.backup.name'));
 
         $backup = $backupDestination->backups()->first(function (Backup $backup) use ($filePath) {
             return $backup->path() === $filePath;
         });
 
-        if (! $backup) {
+        if (!$backup) {
             return response('Backup not found', Response::HTTP_UNPROCESSABLE_ENTITY);
         }
 
@@ -167,5 +172,45 @@ class App extends Component
     public function render()
     {
         return view('laravel_backup_panel::livewire.app');
+    }
+
+    protected function validateActiveDisk()
+    {
+        try {
+            Validator::make(
+                ['activeDisk' => $this->activeDisk],
+                [
+                    'activeDisk' => ['required', new BackupDisk()],
+                ],
+                [
+                    'activeDisk.required' => 'Select a disk',
+                ]
+            )->validate();
+        } catch (ValidationException $e) {
+            $message = $e->validator->errors()->get('activeDisk')[0];
+            $this->emitSelf('showErrorToast', $message);
+
+            throw $e;
+        }
+    }
+
+    protected function validateFilePath(string $filePath)
+    {
+        try {
+            Validator::make(
+                ['file' => $filePath],
+                [
+                    'file' => ['required', new PathToZip()],
+                ],
+                [
+                    'file.required' => 'Select a file',
+                ]
+            )->validate();
+        } catch (ValidationException $e) {
+            $message = $e->validator->errors()->get('file')[0];
+            $this->emitSelf('showErrorToast', $message);
+
+            throw $e;
+        }
     }
 }

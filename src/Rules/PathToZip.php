@@ -14,6 +14,6 @@ class PathToZip implements Rule
 
     public function message()
     {
-        return 'The given value must be a path to a zip file.';
+        return 'It must be a zip file';
     }
 }
