@@ -2,6 +2,11 @@
 
 All notable changes to `laravel-backup-panel` will be documented in this file
 
+## 1.5.1 - 2021-01-22
+
+- Java Script dependencies were updated to eliminate vulnerabilities found in the previous versions of libraries
+- Laravel Mix was updated to version 6
+
 ## 1.5.0 - 2020-04-02
 
 - show warning when assets are outdated (it is recommended to run `php artisan vendor:publish --tag=laravel-backup-panel-assets --force` after updating)
