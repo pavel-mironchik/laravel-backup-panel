@@ -15,6 +15,6 @@ class BackupDisk implements Rule
 
     public function message()
     {
-        return 'This disk is not configured as a backup disk.';
+        return 'Current disk is not configured as a backup disk';
     }
 }
