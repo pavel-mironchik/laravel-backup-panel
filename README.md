@@ -26,6 +26,11 @@ Also, some users reported about hitting a rate limit of Dropbox API._
 ## Requirements
 
 Make sure you meet [the requirements for installing spatie/laravel-backup](https://docs.spatie.be/laravel-backup/v6/requirements).
+Since this package requires the spatie/laravel-backup version 6.11.12 or higher, it also requires PHP 7.3 and Laravel 6.0 or higher.
+
+### Using an older version of PHP, Laravel, spatie/laravel-backup?
+
+Just use the older version of this package, see the `v1` branch.
 
 ## Installation
 
@@ -51,14 +56,18 @@ This will do the following:
 - add config file `config/laravel_backup_panel.php`
 - register service provider `app/Providers/LaravelBackupPanelServiceProvider.php`
 
-### Upgrading
+### Updating
 
-When upgrading the package, do not forget to re-publish resources:
+When updating the package, do not forget to re-publish resources:
 
 ```bash
 $ php artisan vendor:publish --tag=laravel-backup-panel-assets --force
 $ php artisan vendor:publish --tag=laravel-backup-panel-views --force
 ```
+
+### Upgrading
+
+See the [Wiki](https://github.com/pavel-mironchik/laravel-backup-panel/wiki/Upgrade-Guide) for the instructions how to upgrade from version 1.
 
 ## Configuration
 
@@ -102,12 +111,6 @@ protected function gate()
 
 Open `http://your-site/backup`. You'll see a dashboard and controls to use.
 
-### Testing
-
-```bash
-$ composer test
-```
-
 ### Changelog
 
 Please see [CHANGELOG](CHANGELOG.md) for more information about what has changed recently.
@@ -122,6 +125,12 @@ Make sure you've prepared a dummy Laravel application to test the package in, be
 
 ```js
 .copy('public/vendor/laravel_backup_panel', '../laravel-backup-panel-test/public/vendor/laravel_backup_panel');
+```
+
+### Testing
+
+```bash
+$ composer test
 ```
 
 ### Security
