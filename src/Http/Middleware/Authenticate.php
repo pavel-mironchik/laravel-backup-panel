@@ -18,6 +18,10 @@ class Authenticate
      */
     public function handle($request, $next)
     {
-        return LaravelBackupPanel::check($request) ? $next($request) : abort(403);
+        if (LaravelBackupPanel::check($request)) {
+            return $next($request);
+        }
+
+        abort(403);
     }
 }

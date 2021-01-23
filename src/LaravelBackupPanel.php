@@ -4,6 +4,7 @@ namespace PavelMironchik\LaravelBackupPanel;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\File;
 use RuntimeException;
 
@@ -25,7 +26,7 @@ class LaravelBackupPanel
     public static function check($request)
     {
         return (static::$authUsing ?: function () {
-            return app()->environment('local');
+            return App::environment('local');
         })($request);
     }
 

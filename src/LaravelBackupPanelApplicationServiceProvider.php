@@ -2,6 +2,7 @@
 
 namespace PavelMironchik\LaravelBackupPanel;
 
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 
@@ -27,7 +28,7 @@ class LaravelBackupPanelApplicationServiceProvider extends ServiceProvider
         $this->gate();
 
         LaravelBackupPanel::auth(function ($request) {
-            return app()->environment('local') ||
+            return App::environment('local') ||
                    Gate::check('viewLaravelBackupPanel', [$request->user()]);
         });
     }
