@@ -43,7 +43,7 @@ class InstallCommandTest extends TestCase
 
     public function test_install_command_registers_provider()
     {
-        $namespace = Str::replaceLast('\\', '',  $this->app->getNamespace());
+        $namespace = Str::replaceLast('\\', '', $this->app->getNamespace());
 
         $appConfig = file_get_contents(config_path('app.php'));
 
