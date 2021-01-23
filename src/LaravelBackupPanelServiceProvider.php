@@ -5,6 +5,7 @@ namespace PavelMironchik\LaravelBackupPanel;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 use Livewire\Livewire;
+use PavelMironchik\LaravelBackupPanel\Console\InstallCommand;
 use PavelMironchik\LaravelBackupPanel\Http\Livewire\App;
 use PavelMironchik\LaravelBackupPanel\Http\Middleware\Authenticate;
 
@@ -31,7 +32,7 @@ class LaravelBackupPanelServiceProvider extends ServiceProvider
             ], 'laravel-backup-panel-provider');
 
             $this->commands([
-                Console\InstallCommand::class,
+                InstallCommand::class,
             ]);
         }
 
