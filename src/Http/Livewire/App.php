@@ -54,9 +54,12 @@ class App extends Component
             $this->activeDisk = $this->backupStatuses[0]['disk'];
         }
 
-        foreach ($this->backupStatuses as $backupStatus) {
-            $this->disks[] = $backupStatus['disk'];
-        }
+        $this->disks = collect($this->backupStatuses)
+            ->map(function ($backupStatus) {
+                return $backupStatus['disk'];
+            })
+            ->values()
+            ->all();
 
         $this->emitSelf('backupStatusesUpdated');
     }
