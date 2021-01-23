@@ -1,9 +1,10 @@
 <?php
 
-namespace PavelMironchik\LaravelBackupPanel\Tests;
+namespace PavelMironchik\LaravelBackupPanel\Tests\Feature;
 
 use Illuminate\Foundation\Application;
 use PavelMironchik\LaravelBackupPanel\LaravelBackupPanel;
+use PavelMironchik\LaravelBackupPanel\Tests\TestCase;
 
 class InterfaceTest extends TestCase
 {

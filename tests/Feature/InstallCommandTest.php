@@ -1,16 +1,14 @@
 <?php
 
-namespace PavelMironchik\LaravelBackupPanel\Tests;
+namespace PavelMironchik\LaravelBackupPanel\Tests\Feature;
 
-use Illuminate\Console\DetectsApplicationNamespace;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
+use PavelMironchik\LaravelBackupPanel\Tests\TestCase;
 
 class InstallCommandTest extends TestCase
 {
-    use DetectsApplicationNamespace;
-
     public function test_install_command_publishes_assets()
     {
         $directory = public_path('vendor/laravel_backup_panel');
@@ -32,7 +30,7 @@ class InstallCommandTest extends TestCase
 
     public function test_install_command_sets_namespace_for_provider()
     {
-        $namespace = Str::replaceLast('\\', '', $this->getAppNamespace());
+        $namespace = Str::replaceLast('\\', '', $this->app->getNamespace());
 
         $provider = file_get_contents(app_path('Providers/LaravelBackupPanelServiceProvider.php'));
 
@@ -44,7 +42,7 @@ class InstallCommandTest extends TestCase
 
     public function test_install_command_registers_provider()
     {
-        $namespace = Str::replaceLast('\\', '', $this->getAppNamespace());
+        $namespace = Str::replaceLast('\\', '', $this->app->getNamespace());
 
         $appConfig = file_get_contents(config_path('app.php'));
 
@@ -89,7 +87,7 @@ class InstallCommandTest extends TestCase
         }
 
         // Reset providers.
-        $namespace = Str::replaceLast('\\', '', $this->getAppNamespace());
+        $namespace = Str::replaceLast('\\', '', $this->app->getNamespace());
 
         $appConfig = file_get_contents(config_path('app.php'));
         if (Str::contains($appConfig, $namespace.'\\Providers\\LaravelBackupPanelServiceProvider::class')) {

@@ -1,9 +1,10 @@
 <?php
 
-namespace PavelMironchik\LaravelBackupPanel\Tests;
+namespace PavelMironchik\LaravelBackupPanel\Tests\Feature;
 
 use PavelMironchik\LaravelBackupPanel\Http\Middleware\Authenticate;
 use PavelMironchik\LaravelBackupPanel\LaravelBackupPanel;
+use PavelMironchik\LaravelBackupPanel\Tests\TestCase;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class AuthTest extends TestCase
