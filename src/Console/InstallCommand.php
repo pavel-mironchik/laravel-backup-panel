@@ -41,6 +41,9 @@ class InstallCommand extends Command
         $this->comment('Publishing Laravel Backup Panel service provider...');
         $this->callSilent('vendor:publish', ['--tag' => 'laravel-backup-panel-provider']);
 
+        $this->comment('Publishing Laravel Backup Panel assets...');
+        $this->callSilent('vendor:publish', ['--tag' => 'laravel-backup-panel-assets']);
+
         $this->comment('Publishing Laravel Backup Panel views...');
         $this->callSilent('vendor:publish', ['--tag' => 'laravel-backup-panel-views']);
 

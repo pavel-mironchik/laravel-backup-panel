@@ -24,6 +24,10 @@ class LaravelBackupPanelServiceProvider extends ServiceProvider
             ], 'laravel-backup-panel-config');
 
             $this->publishes([
+                __DIR__.'/../resources/assets/css' => public_path('vendor/laravel_backup_panel'),
+            ], 'laravel-backup-panel-assets');
+
+            $this->publishes([
                 __DIR__.'/../resources/views' => resource_path('views/vendor/laravel_backup_panel'),
             ], 'laravel-backup-panel-views');
 
