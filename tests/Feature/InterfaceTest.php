@@ -20,16 +20,6 @@ class InterfaceTest extends TestCase
             ->assertViewIs('laravel_backup_panel::layout');
     }
 
-    public function test_home_view_gets_global_variables()
-    {
-        $this->get('/backup')
-            ->assertViewHas('globalVariables', [
-                'path' => 'backup',
-                'queue' => null,
-                'assetsAreCurrent' => true,
-            ]);
-    }
-
     /**
      * Define environment setup.
      *
