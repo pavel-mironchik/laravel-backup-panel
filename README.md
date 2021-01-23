@@ -39,23 +39,30 @@ You may use composer to install Laravel Backup Panel into your project:
 $ composer require pavel-mironchik/laravel-backup-panel
 ```
 
-After installing, publish it resources using provided Artisan command:
+After installing, publish its resources using provided Artisan command:
 
 ```bash
 $ php artisan laravel-backup-panel:install
 ```
 
-This will place assets into `public/laravel_backup_panel` directory, add config file `config/laravel_backup_panel.php`, and register service provider `app/Providers/LaravelBackupPanelServiceProvider.php`.
+This will do the following:
+- place CSS files into `public/vendor/laravel_backup_panel` directory
+- place Blade templates into `resources/views/vendor/laravel_backup_panel` directory
+- add config file `config/laravel_backup_panel.php`
+- register service provider `app/Providers/LaravelBackupPanelServiceProvider.php`
 
 ### Upgrading
 
-When upgrading the package, do not forget to re-publish assets:
+When upgrading the package, do not forget to re-publish resources:
 
 ```bash
 $ php artisan vendor:publish --tag=laravel-backup-panel-assets --force
+$ php artisan vendor:publish --tag=laravel-backup-panel-views --force
 ```
 
 ## Configuration
+
+You are free to tune CSS styles in the `public/vendor/laravel_backup_panel` directory and change the layout in the `resources/views/vendor/laravel_backup_panel` directory as you want.
 
 Laravel Backup Panel exposes a dashboard at `/backup`. Change it in `config/laravel_backup_panel.php` file:
 
