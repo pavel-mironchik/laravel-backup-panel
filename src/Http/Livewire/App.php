@@ -50,7 +50,7 @@ class App extends Component
                 ->toArray();
         });
 
-        if (!$this->activeDisk and count($this->backupStatuses)) {
+        if (! $this->activeDisk and count($this->backupStatuses)) {
             $this->activeDisk = $this->backupStatuses[0]['disk'];
         }
 
@@ -123,7 +123,6 @@ class App extends Component
 
     public function downloadFile(string $filePath)
     {
-
         $this->validateActiveDisk();
         $this->validateFilePath($filePath);
 
@@ -133,7 +132,7 @@ class App extends Component
             return $backup->path() === $filePath;
         });
 
-        if (!$backup) {
+        if (! $backup) {
             return response('Backup not found', Response::HTTP_UNPROCESSABLE_ENTITY);
         }
 
