@@ -119,14 +119,6 @@ Please see [CHANGELOG](CHANGELOG.md) for more information about what has changed
 
 Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
-### Development
-
-Make sure you've prepared a dummy Laravel application to test the package in, because assets will be copied there by this line in `webpack.mix.js`:
-
-```js
-.copy('public/vendor/laravel_backup_panel', '../laravel-backup-panel-test/public/vendor/laravel_backup_panel');
-```
-
 ### Testing
 
 ```bash
