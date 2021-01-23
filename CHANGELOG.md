@@ -2,6 +2,11 @@
 
 All notable changes to `laravel-backup-panel` will be documented in this file
 
+## 2.0.0 - 2021-01-24
+
+- Use Laravel Livewire instead of VueJS
+- Allow to customize the layout and the styles 
+
 ## 1.5.1 - 2021-01-22
 
 - Java Script dependencies were updated to eliminate vulnerabilities found in the previous versions of libraries
