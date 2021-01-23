@@ -9,13 +9,14 @@ use PavelMironchik\LaravelBackupPanel\Tests\TestCase;
 
 class InstallCommandTest extends TestCase
 {
-    public function test_install_command_publishes_assets()
+    public function test_install_command_publishes_views()
     {
-        $directory = public_path('vendor/laravel_backup_panel');
+        $directory = resource_path('views/vendor/laravel_backup_panel');
 
-        $this->assertTrue(File::exists($directory.'/app.css'));
-        $this->assertTrue(File::exists($directory.'/app.js'));
-        $this->assertTrue(File::exists($directory.'/mix-manifest.json'));
+        $this->assertTrue(File::exists($directory.'/icons/healthy.blade.php'));
+        $this->assertTrue(File::exists($directory.'/icons/unhealthy.blade.php'));
+        $this->assertTrue(File::exists($directory.'/livewire/app.blade.php'));
+        $this->assertTrue(File::exists($directory.'/layout.blade.php'));
     }
 
     public function test_install_command_publishes_config()
@@ -68,8 +69,8 @@ class InstallCommandTest extends TestCase
 
     private function clearFiles()
     {
-        // Clear assets.
-        $path = public_path('vendor/laravel_backup_panel');
+        // Clear views.
+        $path = resource_path('views/vendor/laravel_backup_panel');
         if (File::exists($path)) {
             File::deleteDirectory($path);
         }
