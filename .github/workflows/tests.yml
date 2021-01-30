@@ -1,0 +1,26 @@
+name: Tests
+
+on: push
+
+jobs:
+
+  tests:
+    name: PHP ${{ matrix.php }}
+    
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        php: ['7.3', '7.4', '8.0']
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+      - name: Install composer dependencies
+        run: composer install
+      - name: Run tests via PHPUnit
+        run: composer test
