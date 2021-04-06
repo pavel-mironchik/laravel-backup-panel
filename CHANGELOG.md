@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-backup-panel` will be documented in this file
 
+## 2.1.0 - 2021-04-06
+
+- Add support for spatie/laravel-backup ^7.0
+
 ## 2.0.0 - 2021-01-24
 
 - Use Laravel Livewire instead of VueJS
