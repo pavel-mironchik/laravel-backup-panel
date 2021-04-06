@@ -18,7 +18,7 @@
     "require": {
         "php": "^8.0|^7.3",
         "livewire/livewire": "^2.3",
-        "spatie/laravel-backup": "^6.11.12"
+        "spatie/laravel-backup": "^6.11.12|^7.0"
     },
     "require-dev": {
         "orchestra/testbench": "^5.0|^6.0",
