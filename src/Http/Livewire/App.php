@@ -79,6 +79,7 @@ class App extends Component
                 ->backups()
                 ->map(function (Backup $backup) {
                     $size = method_exists($backup, 'sizeInBytes') ? $backup->sizeInBytes() : $backup->size();
+
                     return [
                         'path' => $backup->path(),
                         'date' => $backup->date()->format('Y-m-d H:i:s'),
