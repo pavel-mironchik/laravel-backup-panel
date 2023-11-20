@@ -169,7 +169,7 @@
     </div>
 
     <script>
-        document.addEventListener('livewire:load', function () {
+        document.addEventListener('livewire:initialized', () => {
             @this.updateBackupStatuses()
 
             @this.on('backupStatusesUpdated', function () {
