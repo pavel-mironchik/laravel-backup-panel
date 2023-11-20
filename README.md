@@ -42,7 +42,7 @@ When successful, running `php artisan backup:run` on the terminal should create 
 You may use composer to install Laravel Backup Panel into your project:
 
 ```bash
-$ composer require pavel-mironchik/laravel-backup-panel
+$ composer require dyanakiev-forks/laravel-backup-panel
 ```
 
 After installing, publish its resources using provided Artisan command:

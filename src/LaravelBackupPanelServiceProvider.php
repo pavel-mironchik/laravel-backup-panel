@@ -40,12 +40,14 @@ class LaravelBackupPanelServiceProvider extends ServiceProvider
             ]);
         }
 
-        Route::group([
-            'prefix' => config('laravel_backup_panel.path'),
-            'middleware' => ['web', Authenticate::class],
-        ], function () {
-            $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
-        });
+      if(config('laravel_backup_panel.routes') === true) {
+          Route::group([
+                'prefix' => config('laravel_backup_panel.path'),
+                'middleware' => ['web', Authenticate::class],
+            ], function () {
+                $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
+            });
+      }
 
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'laravel_backup_panel');
 

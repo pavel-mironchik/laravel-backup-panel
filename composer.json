@@ -1,5 +1,5 @@
 {
-    "name": "pavel-mironchik/laravel-backup-panel",
+    "name": "dyanakiev-forks/laravel-backup-panel",
     "description": "An interface for Spatie Laravel Backup package",
     "homepage": "https://github.com/pavel-mironchik/laravel-backup-panel",
     "keywords": [
@@ -16,12 +16,12 @@
         }
     ],
     "require": {
-        "php": "^8.0|^7.3",
-        "livewire/livewire": "^2.3",
-        "spatie/laravel-backup": "^6.11.12|^7.0|^8.0"
+        "php": "^8.1",
+        "livewire/livewire": "^3.2",
+        "spatie/laravel-backup": "^6.11.12|^7.0|^8.4"
     },
     "require-dev": {
-        "orchestra/testbench": "^5.0|^6.0",
+        "orchestra/testbench": "^5.0|^6.0|^7.0|^8.0",
         "phpunit/phpunit": "9.3"
     },
     "autoload": {
