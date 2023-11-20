@@ -60,8 +60,8 @@ class App extends Component
             })
             ->values()
             ->all();
-
-        $this->emitSelf('backupStatusesUpdated');
+        
+        $this->dispatch('backupStatusesUpdated')->self();
     }
 
     public function getFiles(string $disk = '')
@@ -94,7 +94,7 @@ class App extends Component
     {
         $this->deletingFile = $this->files[$fileIndex];
 
-        $this->emitSelf('showDeleteModal');
+        $this->dispatch('showDeleteModal')->self();
     }
 
     public function deleteFile()
@@ -102,7 +102,7 @@ class App extends Component
         $deletingFile = $this->deletingFile;
         $this->deletingFile = null;
 
-        $this->emitSelf('hideDeleteModal');
+        $this->dispatch('hideDeleteModal')->self();
 
         $this->validateActiveDisk();
         $this->validateFilePath($deletingFile ? $deletingFile['path'] : '');
@@ -193,7 +193,8 @@ class App extends Component
             )->validate();
         } catch (ValidationException $e) {
             $message = $e->validator->errors()->get('activeDisk')[0];
-            $this->emitSelf('showErrorToast', $message);
+    
+            $this->dispatch('showErrorToast', $message)->self();
 
             throw $e;
         }
@@ -213,7 +214,7 @@ class App extends Component
             )->validate();
         } catch (ValidationException $e) {
             $message = $e->validator->errors()->get('file')[0];
-            $this->emitSelf('showErrorToast', $message);
+            $this->dispatch('showErrorToast', $message)->self();
 
             throw $e;
         }
